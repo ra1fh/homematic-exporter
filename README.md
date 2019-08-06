@@ -2,13 +2,13 @@ HomeMatic CCU2 Prometheus Exporter
 ==================================
 
 This repository contains a CGI script to be installed on a
-[https://www.eq-3.com/products/homematic.html](HomeMatic)
-[https://www.eq-3.com/products/homematic/control-units-and-gateways/homematic-central-control-unit-ccu2.html](CCU2)
+[HomeMatic](https://www.eq-3.com/products/homematic.html)
+[CCU2](https://www.eq-3.com/products/homematic/control-units-and-gateways/homematic-central-control-unit-ccu2.html)
 home automation control unit. It provides a metrics endpoint for
-[https://prometheus.io/](Prometheus) for the following devices:
+[Prometheus](https://prometheus.io/) for the following devices:
 
- * [https://www.eq-3.com/products/homematic/heating-and-climate-control/homematic-wireless-radiator-thermostat.html](HomeMatic Wireless Raditor Thermostat)
- * [https://www.eq-3.com/products/homematic/heating-and-climate-control/homematic-wireless-temperature-sensor-outdoor.html](HomeMatic Wireleass Temperature Sensor)
+ * [HomeMatic Wireless Raditor Thermostat](https://www.eq-3.com/products/homematic/heating-and-climate-control/homematic-wireless-radiator-thermostat.html)
+ * [HomeMatic Wireleass Temperature Sensor](https://www.eq-3.com/products/homematic/heating-and-climate-control/homematic-wireless-temperature-sensor-outdoor.html)
  
 For any additional sensor or unit types the script needs to be extended.
 
