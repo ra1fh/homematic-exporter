@@ -19,6 +19,7 @@ Installation and Usage
    mode 0755, owner root, group root.
  * Try to access http://homematic.example.com/addons/prometheus.cgi
    This returns metrics in the form:
+
     # HELP homematic_control_mode Valve control mode.
     # TYPE homematic_control_mode gauge
     homematic_control_mode{dev_address="MEQ1234567", dev_hss_type="HM-CC-RT-DN", dev_name="Kueche"} 1
@@ -34,7 +35,9 @@ Installation and Usage
     # HELP homematic_set_temperature_celsius Set temperature in celsius.
     # TYPE homematic_set_temperature_celsius gauge
     homematic_set_temperature_celsius{dev_address="MEQ1234567", dev_hss_type="HM-CC-RT-DN", dev_name="Kueche"} 30.500000
+
  * Add to prometheus.yml:
+
     scrape_configs:
       - job_name: 'homematic'
         scheme: http
