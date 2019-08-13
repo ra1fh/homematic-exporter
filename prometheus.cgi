@@ -49,86 +49,85 @@ foreach(s_device, dom.GetObject(ID_DEVICES).EnumUsedIDs()) {
                 }
 
                 if (val_str.Length() > 0) {
-					var d_h = o_device.HssType();
-					var d_a = o_device.Address();
-					var d_n = o_device.Name();
-					var d_hss = o_dp.HssType();
-					string metric_name = "";
-					string metric_help = "";
-					string metric_type = "gauge";
+                    var d_h = o_device.HssType();
+                    var d_a = o_device.Address();
+                    var d_n = o_device.Name();
+                    var d_hss = o_dp.HssType();
+                    string metric_name = "";
+                    string metric_help = "";
+                    string metric_type = "gauge";
 
-					if (d_h == "HM-CC-RT-DN") {
-						if (d_hss == "ACTUAL_TEMPERATURE") {
-							metric_name = "homematic_temperature_celsius";
-							metric_help = "Temperature in celsius.";
-						} elseif (d_hss == "SET_TEMPERATURE") {
-							metric_name = "homematic_set_temperature_celsius";	
-							metric_help = "Set temperature in celsius.";
-						} elseif (d_hss == "BATTERY_STATE") {
-							metric_name = "homematic_battery_volts";
-							metric_help = "Battery voltage.";
-						} elseif (d_hss == "CONTROL_MODE") {
-							metric_name = "homematic_control_mode";
-							metric_help = "Valve control mode.";
-						} elseif (d_hss == "AUTO_MODE") {
-							metric_name = "homematic_auto_mode";
-							metric_help = "Valve auto mode.";
-						} elseif (d_hss == "BOOST_MODE") {
-							metric_name = "homematic_boost_mode";
-							metric_help = "Valve boost mode.";
-						} elseif (d_hss == "COMFORT_MODE") {
-							metric_name = "homematic_comfort_mode";
-							metric_help = "Valve comfort mode.";
-						} elseif (d_hss == "LOWERING_MODE") {
-							metric_name = "homematic_lowering_mode";
-							metric_help = "Valve lowering mode.";
-						} elseif (d_hss == "BOOST_STATE") {
-							metric_name = "homematic_boost_state";
-							metric_help = "Valve boost state.";
-						} elseif (d_hss == "VALVE_STATE") {
-							metric_name = "homematic_valve_state";
-							metric_help = "Valve state.";
-						}
-					} elseif (d_h == "HM-WDS30-T-O") {
-						if (d_hss == "TEMPERATURE") {
-							metric_name = "homematic_temperature_celsius";
-							metric_help = "Temperature in celsius.";
-						}
-					} elseif (d_h == "HM-WDS40-TH-I-2") {
-						if (d_hss == "TEMPERATURE") {
-							metric_name = "homematic_temperature_celsius";
-							metric_help = "Temperature in celsius.";
-						} elseif (d_hss == "HUMIDITY") {
-							metric_name = "homematic_humidity_percent";
-							metric_help = "Humidity in percent.";
-						}
-					}
-				
-					if (metric_name.Length() > 0) {
-						if (metric_list.Find(metric_name) == -1) {
-							metric_list = metric_list # "\t" # metric_name;
-							WriteLine("# HELP " # metric_name # " " # metric_help)
-							WriteLine("# TYPE " # metric_name # " " # metric_type)
-						}
-						WriteLine(metric_name # "{"
-                        #     "dev_address=\"" # d_a
-                        # "\", dev_hss_type=\"" # d_h
-                        # "\", dev_name=\"" # d_n
-                        # "\"} " # val_str )
-					} elseif (0) {
-						WriteLine("# UNKNOWN " # metric_name # "{"
-                        #     "dev_address=\"" # d_a
-                        # "\", dev_hss_type=\"" # d_h
-                        # "\", dev_hss=\"" # d_hss
-                        # "\", dev_name=\"" # d_n
-                        # "\"} " # val_str )
-                        		}
+                    if (d_h == "HM-CC-RT-DN") {
+                        if (d_hss == "ACTUAL_TEMPERATURE") {
+                            metric_name = "homematic_temperature_celsius";
+                            metric_help = "Temperature in celsius.";
+                        } elseif (d_hss == "SET_TEMPERATURE") {
+                            metric_name = "homematic_set_temperature_celsius";
+                            metric_help = "Set temperature in celsius.";
+                        } elseif (d_hss == "BATTERY_STATE") {
+                            metric_name = "homematic_battery_volts";
+                            metric_help = "Battery voltage.";
+                        } elseif (d_hss == "CONTROL_MODE") {
+                            metric_name = "homematic_control_mode";
+                            metric_help = "Valve control mode.";
+                        } elseif (d_hss == "AUTO_MODE") {
+                            metric_name = "homematic_auto_mode";
+                            metric_help = "Valve auto mode.";
+                        } elseif (d_hss == "BOOST_MODE") {
+                            metric_name = "homematic_boost_mode";
+                            metric_help = "Valve boost mode.";
+                        } elseif (d_hss == "COMFORT_MODE") {
+                            metric_name = "homematic_comfort_mode";
+                            metric_help = "Valve comfort mode.";
+                        } elseif (d_hss == "LOWERING_MODE") {
+                            metric_name = "homematic_lowering_mode";
+                            metric_help = "Valve lowering mode.";
+                        } elseif (d_hss == "BOOST_STATE") {
+                            metric_name = "homematic_boost_state";
+                            metric_help = "Valve boost state.";
+                        } elseif (d_hss == "VALVE_STATE") {
+                            metric_name = "homematic_valve_state";
+                            metric_help = "Valve state.";
+                        }
+                    } elseif (d_h == "HM-WDS30-T-O") {
+                        if (d_hss == "TEMPERATURE") {
+                            metric_name = "homematic_temperature_celsius";
+                            metric_help = "Temperature in celsius.";
+                        }
+                    } elseif (d_h == "HM-WDS40-TH-I-2") {
+                        if (d_hss == "TEMPERATURE") {
+                            metric_name = "homematic_temperature_celsius";
+                            metric_help = "Temperature in celsius.";
+                        } elseif (d_hss == "HUMIDITY") {
+                            metric_name = "homematic_humidity_percent";
+                            metric_help = "Humidity in percent.";
+                        }
+                    }
+
+                    if (metric_name.Length() > 0) {
+                        if (metric_list.Find(metric_name) == -1) {
+                            metric_list = metric_list # "\t" # metric_name;
+                            WriteLine("# HELP " # metric_name # " " # metric_help)
+                            WriteLine("# TYPE " # metric_name # " " # metric_type)
+                        }
+                        WriteLine(metric_name # "{"
+                                  #     "dev_address=\"" # d_a
+                                  # "\", dev_hss_type=\"" # d_h
+                                  # "\", dev_name=\"" # d_n
+                                  # "\"} " # val_str )
+                    } elseif (0) {
+                        WriteLine("# UNKNOWN " # metric_name # "{"
+                                  #     "dev_address=\"" # d_a
+                                  # "\", dev_hss_type=\"" # d_h
+                                  # "\", dev_hss=\"" # d_hss
+                                  # "\", dev_name=\"" # d_n
+                                  # "\"} " # val_str )
+                    }
                 }
             }
         }
     }
 }
-
 
     }]
     set response [string map {\r\n \n} $res(STDOUT)]
