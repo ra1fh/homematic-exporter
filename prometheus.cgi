@@ -94,6 +94,14 @@ foreach(s_device, dom.GetObject(ID_DEVICES).EnumUsedIDs()) {
 							metric_name = "homematic_temperature_celsius";
 							metric_help = "Temperature in celsius.";
 						}
+					} elseif (d_h == "HM-WDS40-TH-I-2") {
+						if (d_hss == "TEMPERATURE") {
+							metric_name = "homematic_temperature_celsius";
+							metric_help = "Temperature in celsius.";
+						} elseif (d_hss == "HUMIDITY") {
+							metric_name = "homematic_humidity_percent";
+							metric_help = "Humidity in percent.";
+						}
 					}
 				
 					if (metric_name.Length() > 0) {
