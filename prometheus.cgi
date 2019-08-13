@@ -115,7 +115,14 @@ foreach(s_device, dom.GetObject(ID_DEVICES).EnumUsedIDs()) {
                         # "\", dev_hss_type=\"" # d_h
                         # "\", dev_name=\"" # d_n
                         # "\"} " # val_str )
-					}
+					} elseif (0) {
+						WriteLine("# UNKNOWN " # metric_name # "{"
+                        #     "dev_address=\"" # d_a
+                        # "\", dev_hss_type=\"" # d_h
+                        # "\", dev_hss=\"" # d_hss
+                        # "\", dev_name=\"" # d_n
+                        # "\"} " # val_str )
+                        		}
                 }
             }
         }
